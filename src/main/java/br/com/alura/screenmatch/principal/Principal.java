@@ -21,7 +21,7 @@ public class Principal {
     private ConverteDados conversor = new ConverteDados();
 
     public void exibeMenu() {
-        System.out.println("Digite o nome da sério para busca: ");
+        System.out.println("Digite o nome da série para busca: ");
         var nomeSerie = leitura.nextLine();
         var consumo = new ConsumoApi();
         var json = consumo.obterDados(ENDERECO + nomeSerie.replace(" ", "+") + API_KEY);
