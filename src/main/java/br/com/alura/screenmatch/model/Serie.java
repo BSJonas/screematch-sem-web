@@ -5,15 +5,17 @@ import java.util.List;
 import java.util.OptionalDouble;
 
 import br.com.alura.screenmatch.service.ConsultaChatGPT;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "series")
@@ -31,11 +33,11 @@ public class Serie {
 	private String atores;
 	private String poster;
 	private String sinopse;
-	@Transient
+
+	@OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Episodio> episodios = new ArrayList<>();
 
 	public Serie() {
-
 	}
 
 	public Serie(DadosSerie dadosSerie) {
@@ -61,6 +63,7 @@ public class Serie {
 	}
 
 	public void setEpisodios(List<Episodio> episodios) {
+		episodios.forEach(e -> e.setSerie(this));
 		this.episodios = episodios;
 	}
 
@@ -129,6 +132,7 @@ public class Serie {
 				", avaliacao='" + avaliacao + '\'' +
 				", atores='" + atores + '\'' +
 				", poster='" + poster + '\'' +
-				", sinopse='" + sinopse + '\'';
+				", sinopse='" + sinopse + '\'' +
+				", episodios='" + episodios + '\'';
 	}
 }
