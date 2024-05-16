@@ -22,9 +22,11 @@ public class Episodio {
 	private Integer numeroEpisodio;
 	private Double avaliacao;
 	private LocalDate dataLancamento;
-
 	@ManyToOne
 	private Serie serie;
+
+	public Episodio() {
+	}
 
 	public Episodio(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
 		this.temporada = numeroTemporada;
@@ -44,7 +46,20 @@ public class Episodio {
 		}
 	}
 
-	public Episodio() {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Serie getSerie() {
+		return serie;
+	}
+
+	public void setSerie(Serie serie) {
+		this.serie = serie;
 	}
 
 	public Integer getTemporada() {
@@ -87,21 +102,12 @@ public class Episodio {
 		this.dataLancamento = dataLancamento;
 	}
 
-	public Serie getSerie() {
-		return serie;
-	}
-
-	public void setSerie(Serie serie) {
-		this.serie = serie;
-	}
-
 	@Override
 	public String toString() {
 		return "temporada=" + temporada +
-			", titulo='" + titulo + '\'' +
-			", numeroEpisodio=" + numeroEpisodio +
-			", avaliacao=" + avaliacao +
-			", dataLancamento=" + dataLancamento;
+			   ", titulo='" + titulo + '\'' +
+			   ", numeroEpisodio=" + numeroEpisodio +
+			   ", avaliacao=" + avaliacao +
+			   ", dataLancamento=" + dataLancamento;
 	}
-
 }

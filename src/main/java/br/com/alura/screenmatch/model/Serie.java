@@ -6,7 +6,6 @@ import java.util.OptionalDouble;
 
 import br.com.alura.screenmatch.service.ConsultaChatGPT;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -20,11 +19,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "series")
 public class Serie {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
 	private String titulo;
 	private Integer totalTemporadas;
 	private Double avaliacao;
@@ -127,12 +124,12 @@ public class Serie {
 	public String toString() {
 		return
 			"genero=" + genero +
-				", titulo='" + titulo + '\'' +
-				", totalTemporadas=" + totalTemporadas +
-				", avaliacao='" + avaliacao + '\'' +
-				", atores='" + atores + '\'' +
-				", poster='" + poster + '\'' +
-				", sinopse='" + sinopse + '\'' +
-				", episodios='" + episodios + '\'';
+			", titulo='" + titulo + '\'' +
+			", totalTemporadas=" + totalTemporadas +
+			", avaliacao=" + avaliacao +
+			", atores='" + atores + '\'' +
+			", poster='" + poster + '\'' +
+			", sinopse='" + sinopse + '\'' +
+			", episodios='" + episodios + '\'';
 	}
 }
